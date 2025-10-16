@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フットサルリーグ</title>
+    <!-- 画面共通CSS -->
+    <link rel="stylesheet" href="./futsal_file/css/reset.css">
+    <!-- 画面個別CSS -->
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        header {
+            padding: 12px 0;
+        }
+
+        h1 {
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 32px;
+            color: #2E2E2E;
+            text-align: center;
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 32px 20px 48px;
+        }
+
+        li:not(:first-child) {
+            padding-top: 24px;
+        }
+
+        footer {
+            padding: 8px 0;
+        }
+
+        footer>p {
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 14px;
+            color: #2E2E2E;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <h1>フットサルリーグ</h1>
+    </header>
+
+    <!-- メイン -->
+    <main>
+        <ul>
+            <li>
+                <a href="./Views/manageTeam.html">チーム管理</a>
+            </li>
+        </ul>
+    </main>
+
+    <!-- フッター -->
+    <footer>
+        <p>&copy; フットサルリーグ 2025.</p>
+    </footer>
+</body>
+
+</html>

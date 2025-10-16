@@ -1,0 +1,98 @@
+/** チーム管理（管理者） **/
+.mt_expSec {
+    padding: 32px 20px 0;
+}
+
+.mt_teamSec {
+    padding: 48px 20px 0;
+}
+
+.mt_roundList>li:not(:first-child) {
+    padding-top: 48px;
+}
+
+.mt_teamList {
+    padding-top: 24px;
+}
+
+.mt_teamList>li {
+    display: flex;
+    justify-content: center;
+}
+
+.mt_teamList>li:not(:first-child) {
+    padding-top: 16px;
+}
+
+.mt_teamBtn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 320px;
+    padding: 16px 20px;
+    border-radius: 16px;
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.mt_teamBtn:has(.mt_teamNameInput) {
+    padding: 10px 20px 10px 14px;
+}
+
+.mt_teamBtn>p {
+    flex-grow: 1;
+}
+
+.mt_teamNameInput {
+    flex-grow: 1;
+    display: block;
+    width: 100%;
+    padding: 6px;
+    border-radius: 8px;
+    background-color: #EAF6FF;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #2E2E2E;
+    outline: none;
+}
+
+.mt_teamBtn_icons {
+    flex-shrink: 0;
+    display: flex;
+    padding-left: 8px;
+}
+
+.mt_editIcon,
+.mt_deleteIcon {
+    flex-shrink: 0;
+}
+
+.mt_deleteIcon {
+    margin-left: 16px;
+}
+
+.mt_editIcon>img,
+.mt_deleteIcon>img {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+}
+
+.mt_editIcon:not(.disabled)>img:last-child,
+.mt_deleteIcon:not(.disabled)>img:last-child {
+    display: none;
+}
+
+.mt_editIcon.disabled>img:first-child,
+.mt_deleteIcon.disabled>img:first-child {
+    display: none;
+}
+
+.mt_addMemberLinkArea {
+    display: flex;
+    justify-content: center;
+    padding-top: 24px;
+}
