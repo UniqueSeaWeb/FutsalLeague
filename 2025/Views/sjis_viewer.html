@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Shift-JIS JavaScriptファイルビューア</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #fileUrl {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        #viewButton {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        #content {
+            white-space: pre-wrap; /* 改行とスペースを保持 */
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-top: 20px;
+            min-height: 100px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            overflow: auto;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Shift-JIS JavaScriptファイルビューア</h1>
+
+    <p>表示したいJavaScriptファイル（Shift-JIS形式）のURLを入力してください。</p>
+    
+    <input type="text" id="fileUrl" value="https://example.com/some-sjis-file.js" placeholder="ファイルのURLを入力...">
+    <button id="viewButton">内容を表示</button>
+
+    <div id="content">ここにファイルの内容が表示されます。</div>
+
+    <script>
+        document.getElementById('viewButton').addEventListener('click', async () => {
+            const fileUrl = document.getElementById('fileUrl').value;
+            const contentDiv = document.getElementById('content');
+            contentDiv.textContent = 'ファイルを読み込み中...';
+            contentDiv.classList.remove('error');
+
+            if (!fileUrl) {
+                contentDiv.textContent = 'URLが入力されていません。';
+                contentDiv.classList.add('error');
+                return;
+            }
+
+            try {
+                // 1. ファイルをバイナリデータ（ArrayBuffer）として取得
+                const response = await fetch(fileUrl);
+
+                if (!response.ok) {
+                    throw new Error(`HTTPエラー: ${response.status}`);
+                }
+
+                const arrayBuffer = await response.arrayBuffer();
+
+                // 2. TextDecoderを使用してArrayBufferをShift-JISとしてデコード
+                // 'shift_jis' はブラウザの標準のEncoding APIでサポートされています。
+                const decoder = new TextDecoder('shift_jis');
+                const shiftJisText = decoder.decode(arrayBuffer);
+
+                // 3. 結果を表示
+                contentDiv.textContent = shiftJisText;
+
+            } catch (error) {
+                console.error('ファイルの読み込みまたはデコードに失敗しました:', error);
+                contentDiv.textContent = `エラー: ファイルの読み込みまたはデコードに失敗しました。\n詳細: ${error.message}`;
+                contentDiv.classList.add('error');
+            }
+        });
+    </script>
+</body>
+</html>
